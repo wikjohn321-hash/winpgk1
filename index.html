@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en-PG">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WinPGK – Online Casino App for Papua New Guinea</title>
+<meta name="description" content="WinPGK: slots, crash games, mini games, live casino and sports in one app-style page for Papua New Guinea players. Register in minutes.">
+<meta name="theme-color" content="#06120e">
+<style>
+:root{--bg:#050d0a;--card:#0b1d16;--line:#13352a;--g1:#1fd49a;--g2:#0a8f68;--txt:#e9fff7;--mut:#7fa99a}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:78px}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:560px;margin:0 auto;position:relative}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:20;background:rgba(5,13,10,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:8px;padding:10px 12px}
+.logo{font-weight:900;font-size:24px;letter-spacing:-1px;margin-right:auto}
+.logo b{color:var(--g1)}
+.logo img{display:block;height:36px;width:auto}
+.btn{border-radius:999px;font-weight:800;font-size:13px;padding:10px 18px;letter-spacing:.5px;display:inline-block}
+.btn-login{background:linear-gradient(180deg,var(--g1),var(--g2));color:#00281c}
+.btn-reg{background:#fff;color:var(--g2)}
+.menu{width:38px;height:38px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--txt);font-size:18px}
+
+/* slider */
+.slider{position:relative;overflow:hidden;border-bottom:2px solid var(--g1)}
+.slides{display:flex;transition:transform .5s}
+.slide{min-width:100%;aspect-ratio:16/8;padding:22px 20px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.slide h2{font-size:30px;line-height:1.05;font-weight:900;text-transform:uppercase;font-style:italic;text-shadow:0 3px 14px rgba(0,0,0,.5)}
+.slide p{margin-top:8px;font-size:13px;color:#d7fff0;max-width:62%}
+.slide .cta{margin-top:12px;align-self:flex-start;font-size:12px;padding:8px 16px}
+.slide::after{content:"";position:absolute;right:-30px;top:-30px;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle,rgba(31,212,154,.55),transparent 70%)}
+.s1{background:linear-gradient(120deg,#031a12,#0a5a41)}
+.s2{background:linear-gradient(120deg,#08121f,#0b4a6e)}
+.s3{background:linear-gradient(120deg,#1b0d2a,#5a1f7a)}
+.slide.img{padding:0;background:#050d0a}.slide.img::after{display:none}.slide.img img{display:block;width:100%;height:100%;object-fit:contain}
+.dots{position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:6px}
+.dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.4)}
+.dots i.on{background:#fff}
+
+/* ticker */
+.ticker{margin:14px 12px 0;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:10px 12px;font-size:12px;color:var(--mut);display:flex;gap:10px;align-items:center;overflow:hidden;white-space:nowrap}
+.ticker span.ic{width:22px;height:22px;border-radius:50%;background:var(--g2);display:grid;place-items:center;font-size:12px;flex:none}
+
+.sec{padding:0 12px;margin-top:20px}
+.eyebrow{font-size:10px;letter-spacing:2px;color:var(--g1);font-weight:800;text-transform:uppercase}
+.sec h3{font-size:20px;margin:2px 0 10px}
+
+/* quick access */
+.quick{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.quick::-webkit-scrollbar{display:none}
+.q{flex:none;width:190px;display:flex;gap:10px;align-items:center;background:linear-gradient(180deg,var(--card),#08150f);border:1px solid var(--line);border-radius:14px;padding:12px}
+.q .i{width:40px;height:40px;border-radius:10px;background:linear-gradient(180deg,var(--g1),var(--g2));display:grid;place-items:center;font-size:20px}
+.q b{font-size:13px;display:block}
+.q small{font-size:10px;color:var(--mut)}
+
+/* referral strip */
+.ref{display:flex;margin:16px 12px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card)}
+.ref .l{flex:1.4;background:linear-gradient(180deg,var(--g1),var(--g2));color:#00281c;padding:12px}
+.ref .l b{font-size:13px;display:block}
+.ref .l small{font-size:10px;font-weight:700}
+.ref a{flex:1;text-align:center;padding:10px 2px;font-size:9px;font-weight:800;color:var(--txt);border-left:1px solid var(--line);display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center}
+.ref a span{font-size:16px;color:var(--g1)}
+
+/* games */
+.games{display:flex;gap:10px;align-items:flex-start}
+.cats{flex:none;width:58px;display:flex;flex-direction:column;gap:8px;position:sticky;top:64px}
+.cat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 2px;text-align:center;font-size:10px;font-weight:800;color:var(--mut);cursor:pointer}
+.cat span{display:block;font-size:20px;margin-bottom:3px}
+.cat.on{border-color:var(--g1);color:var(--g1);background:#0c2a1f}
+.grid{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.g{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:3/4;background:var(--card);border:1px solid var(--line)}
+.g img{width:100%;height:100%;object-fit:cover;display:block}
+.g::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.85))}
+.g em{position:absolute;z-index:2;left:0;top:0;background:#ff6a1a;color:#fff;font-style:normal;font-size:9px;font-weight:900;padding:3px 8px;border-radius:0 0 10px 0}
+.g div{position:absolute;z-index:2;left:6px;right:6px;bottom:7px;text-align:center;font-weight:900;font-size:12px;line-height:1.1;text-shadow:0 2px 6px #000}
+.g div small{display:block;font-size:8px;font-weight:600;color:#cfe;margin-top:3px;letter-spacing:.5px}
+.g.hide{display:none}
+.g.tile::after{display:none}
+.g.tile{aspect-ratio:147/194;border:0;background:none}
+
+/* info + faq */
+.info{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;font-size:13px;line-height:1.55;color:#cfe9df}
+.info p+p{margin-top:8px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:8px;font-size:13px}
+summary{font-weight:700;cursor:pointer}
+details p{margin-top:8px;color:var(--mut);line-height:1.5}
+.disc{margin:22px 12px 0;font-size:11px;color:var(--mut);line-height:1.5;text-align:center}
+
+/* bottom nav */
+.nav{position:fixed;bottom:0;left:0;right:0;z-index:30;background:rgba(5,13,10,.97);border-top:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:flex-end;justify-content:space-around;padding:6px 6px 8px}
+.nav a{flex:1;text-align:center;font-size:10px;font-weight:800;color:var(--mut);padding-top:4px}
+.nav a span{display:block;font-size:20px}
+.nav a.on{color:var(--g1)}
+.nav a.promo{flex:none;width:64px;height:64px;margin-top:-26px;border-radius:50%;background:radial-gradient(circle at 30% 25%,var(--g1),var(--g2));border:4px solid var(--bg);color:#00281c;display:grid;place-items:center;padding:0;font-size:9px}
+.nav a.promo span{font-size:22px;margin-bottom:-2px}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <a class="logo" href="#"><img src="images/logo.png" alt="WinPGK – Play safe, win big" width="393" height="105"></a>
+  <a class="btn btn-login" data-link="login" href="#">LOGIN</a>
+  <a class="btn btn-reg" data-link="register" href="#">REGISTER</a>
+  <button class="menu" aria-label="Menu">☰</button>
+</div></header>
+
+<main class="wrap">
+
+<div class="slider" id="slider">
+  <div class="slides" id="slides">
+    <a class="slide img" data-link="register" href="#"><img src="images/banners/new-register-free-k28.png" alt="New register free K28" width="548" height="213"></a>
+    <a class="slide img" data-link="register" href="#"><img src="images/banners/monthly-vip-rewards.png" alt="Monthly ranking VIP rewards: Bronze K18, Silver K68, Gold K188" width="561" height="208"></a>
+  </div>
+  <div class="dots" id="dots"><i class="on"></i><i></i></div>
+</div>
+
+<div class="ticker"><span class="ic">⚡</span>Responsible play only. 18+ . Set a budget before you start.</div>
+
+<section class="sec">
+  <div class="eyebrow">Explore</div>
+  <h3>Quick Access</h3>
+  <div class="quick">
+    <a class="q" data-link="register" href="#"><span class="i">🎁</span><span><b>PROMOTION</b><small>Latest promos &amp; rewards</small></span></a>
+    <a class="q" data-link="register" href="#"><span class="i">⚽</span><span><b>SPORTS</b><small>Explore current markets</small></span></a>
+    <a class="q" data-link="register" href="#"><span class="i">🏆</span><span><b>LEADERBOARD</b><small>Climb the rank &amp; win</small></span></a>
+  </div>
+</section>
+
+<div class="ref">
+  <div class="l"><b>REFERRAL</b><small>Share to earn more!</small></div>
+  <a data-link="register" href="#"><span>✉</span>INVITE</a>
+  <a data-link="register" href="#"><span>🔗</span>COPY LINK</a>
+  <a data-link="register" href="#"><span>👥</span>DOWNLINE</a>
+  <a data-link="register" href="#"><span>ⓘ</span>MORE INFO</a>
+</div>
+
+<section class="sec" id="games">
+  <div class="eyebrow">Discover</div>
+  <h3>Popular Games</h3>
+  <div class="games">
+    <div class="cats" id="cats">
+      <div class="cat on" data-c="slot"><span>🎰</span>SLOT</div>
+      <div class="cat" data-c="fast"><span>🚀</span>FAST</div>
+      <div class="cat" data-c="mini"><span>🎯</span>MINI</div>
+      <div class="cat" data-c="live"><span>🃏</span>CASINO</div>
+    </div>
+    <div class="grid" id="grid">
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/megah5.jpg" alt="MEGAH5 slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/uuslot.jpg" alt="UUSLOT slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/evo888h5.jpg" alt="EVO888H5 slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/kissh5.jpg" alt="KISSH5 slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/meta-gaming.jpg" alt="Meta Gaming slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/epicwin.jpg" alt="EpicWin slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/scr888h5.jpg" alt="SCR888H5 slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/wf-gaming.jpg" alt="WF Gaming slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/advant-play.jpg" alt="Advant Play slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/crowd-play.jpg" alt="Crowd Play slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/bng.jpg" alt="BNG slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/imperium.jpg" alt="Imperium Games slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/vpower.jpg" alt="VPower slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/acewin.jpg" alt="AceWin slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/rich-gaming.jpg" alt="Rich Gaming slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/joker.jpg" alt="Joker slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/micro-gaming.jpg" alt="Micro Gaming slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/ygr.jpg" alt="YGR slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/pussy888.jpg" alt="Pussy888 slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/mario.jpg" alt="Mario slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/clotplay.jpg" alt="ClotPlay slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/lfc888.jpg" alt="LFC888 slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/jdb.jpg" alt="JDB slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/rich88.jpg" alt="Rich88 slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/pragmatic-play.jpg" alt="Pragmatic Play slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/jili.jpg" alt="JILI slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/pegasus.jpg" alt="Pegasus slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/nextspin.jpg" alt="NextSpin slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/creative-gaming.jpg" alt="Creative Gaming slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/kaya918.jpg" alt="Kaya918 slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/wudi.jpg" alt="Wudi slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/fuma.jpg" alt="Fuma slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/funky-game.jpg" alt="Funky Game slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/playtech.jpg" alt="Playtech slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/redtiger.jpg" alt="RedTiger slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/habanero.jpg" alt="Habanero slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/fastspin.jpg" alt="FastSpin slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/dreamtech.jpg" alt="DreamTech slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/spade-gaming.jpg" alt="Spade Gaming slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/hacksaw.jpg" alt="Hacksaw slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/vplus.jpg" alt="VPlus slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/popiplay.jpg" alt="PopiPlay slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/playstar.jpg" alt="PlayStar slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/evoplay.jpg" alt="EvoPlay slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/playace.jpg" alt="PlayAce slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/popok.jpg" alt="Popok slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/cq9-gaming.jpg" alt="CQ9 Gaming slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/bt-gaming.jpg" alt="BT Gaming slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/fachai.jpg" alt="Fachai slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/pgsoft.jpg" alt="PGSoft slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/netent.jpg" alt="NetEnt slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/lucky365.jpg" alt="Lucky365 slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/rsg.jpg" alt="RSG slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/dragoon-soft.jpg" alt="Dragoon Soft slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/pxplay.jpg" alt="PXPlay slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/x-gaming.jpg" alt="X-Gaming slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/playson.jpg" alt="Playson slot games"></a>
+      <a class="g tile" data-c="slot" data-link="register" href="#"><img loading="lazy" src="images/slots/homeslot.jpg" alt="Homeslot slot games"></a>
+
+      <a class="g" data-c="fast" data-link="register" href="#"><em>HOT</em><img loading="lazy" src="images/aviator.png" alt="Aviator"><div>AVIATOR<small>CRASH GAME</small></div></a>
+      <a class="g" data-c="fast" data-link="register" href="#"><img loading="lazy" src="images/chicken-road.png" alt="Chicken Road"><div>CHICKEN ROAD<small>CRASH GAME</small></div></a>
+      <a class="g" data-c="fast" data-link="register" href="#"><em>NEW</em><img loading="lazy" src="images/chicken-road-2.png" alt="Chicken Road 2"><div>CHICKEN ROAD 2<small>CRASH GAME</small></div></a>
+      <a class="g" data-c="fast" data-link="register" href="#"><img loading="lazy" src="images/balloon.jpg" alt="Balloon"><div>BALLOON<small>CRASH GAME</small></div></a>
+      <a class="g" data-c="fast" data-link="register" href="#"><img loading="lazy" src="images/goal.jpg" alt="Goal"><div>GOAL<small>CRASH GAME</small></div></a>
+
+      <a class="g" data-c="mini" data-link="register" href="#"><img loading="lazy" src="images/mines.jpg" alt="Mines"><div>MINES<small>MINI GAME</small></div></a>
+      <a class="g" data-c="mini" data-link="register" href="#"><img loading="lazy" src="images/plinko.jpg" alt="Plinko"><div>PLINKO<small>MINI GAME</small></div></a>
+      <a class="g" data-c="mini" data-link="register" href="#"><img loading="lazy" src="images/keno.jpg" alt="Keno"><div>KENO<small>MINI GAME</small></div></a>
+      <a class="g" data-c="mini" data-link="register" href="#"><img loading="lazy" src="images/hilo.jpg" alt="Hilo"><div>HILO<small>MINI GAME</small></div></a>
+      <a class="g" data-c="mini" data-link="register" href="#"><img loading="lazy" src="images/hotline.jpg" alt="Hotline"><div>HOTLINE<small>MINI GAME</small></div></a>
+
+      <a class="g" data-c="live" data-link="register" href="#"><img loading="lazy" src="images/roulette.jpg" alt="Roulette"><div>ROULETTE<small>CASINO</small></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="eyebrow">About</div>
+  <h3>About WinPGK</h3>
+  <div class="info">
+    <p>WinPGK is an independent guide and sign-up page for players in Papua New Guinea. Browse the game types above, then register on the platform to play.</p>
+    <p>Offers, limits and terms are set by the platform, so read them on the platform before you deposit.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="eyebrow">Help</div>
+  <h3>FAQ</h3>
+  <details><summary>How do I register?</summary><p>Tap Register, fill in the form on the platform and confirm your details. Have your phone number ready.</p></details>
+  <details><summary>Can I play on my phone?</summary><p>Yes. This page and the platform are made for mobile screens.</p></details>
+  <details><summary>How does the referral work?</summary><p>Share your link with friends. Check the platform's Agent or Referral page for the current terms.</p></details>
+</section>
+
+<p class="disc">18+ only. Gambling can be addictive; play responsibly and within your budget. This site is an independent affiliate and is not the official platform.</p>
+</main>
+
+<nav class="nav"><div class="wrap">
+  <a class="on" href="#"><span>🏠</span>HOME</a>
+  <a data-link="login" href="#"><span>🕘</span>HISTORY</a>
+  <a class="promo" data-link="register" href="#"><span>🎁</span>PROMO</a>
+  <a data-link="chat" href="#"><span>💬</span>CHAT</a>
+  <a data-link="login" href="#"><span>⚙</span>SETTING</a>
+</div></nav>
+
+<script>
+// Placeholders: swap these before going live
+var LINKS={register:"#",login:"#",chat:"#"};
+document.querySelectorAll("[data-link]").forEach(function(a){
+  var u=LINKS[a.dataset.link];
+  if(u&&u!=="#"){a.href=u;a.target="_blank";a.rel="noopener sponsored"}
+});
+
+// category filter
+var cats=document.querySelectorAll(".cat"),cards=document.querySelectorAll(".g");
+function show(c){cards.forEach(function(g){g.classList.toggle("hide",g.dataset.c!==c)});
+  cats.forEach(function(x){x.classList.toggle("on",x.dataset.c===c)})}
+cats.forEach(function(x){x.addEventListener("click",function(){show(x.dataset.c)})});
+show("slot");
+
+// slider
+var i=0,n=2,sl=document.getElementById("slides"),ds=document.querySelectorAll("#dots i");
+setInterval(function(){i=(i+1)%n;sl.style.transform="translateX(-"+i*100+"%)";
+  ds.forEach(function(d,k){d.classList.toggle("on",k===i)})},4000);
+</script>
+</body>
+</html>

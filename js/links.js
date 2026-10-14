@@ -1,5 +1,5 @@
 // Placeholders: swap these before going live (one place for the whole site)
-var LINKS={register:"#",login:"#",chat:"#"};
+var LINKS={register:"https://kago365.com/RFA55716758",login:"https://kago365.com/RFA55716758",chat:"https://kago365.com/RFA55716758"};
 document.querySelectorAll("[data-link]").forEach(function(a){
   var u=LINKS[a.dataset.link];
   if(u&&u!=="#"){a.href=u;a.target="_blank";a.rel="noopener sponsored"}

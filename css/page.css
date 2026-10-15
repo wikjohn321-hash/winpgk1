@@ -30,7 +30,9 @@ a{color:inherit;text-decoration:none}
 .art strong{color:var(--g1)}
 .tbl{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}
 .tbl th,.tbl td{border:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
-.tbl th{background:var(--card);color:var(--g1);width:42%}
+.tbl th{background:var(--card);color:var(--g1)}
+.tbl tr th:first-child:nth-last-child(2){width:42%}
+.art section{overflow-x:auto}
 .note{margin-top:12px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--g1);border-radius:10px;padding:11px 12px;font-size:13px;line-height:1.55;color:#cfe9df}
 .cta{display:inline-block;margin-top:16px;background:linear-gradient(180deg,var(--g1),var(--g2));color:#00281c;font-weight:900;font-size:15px;padding:13px 26px;border-radius:999px}
 details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:8px;font-size:14px}

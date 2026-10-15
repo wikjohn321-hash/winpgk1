@@ -47,3 +47,8 @@ details p{margin-top:8px;color:var(--mut)}
 .nav a.on{color:var(--g1)}
 .nav a.promo{flex:none;width:64px;height:64px;margin-top:-26px;border-radius:50%;background:radial-gradient(circle at 30% 25%,var(--g1),var(--g2));border:4px solid var(--bg);color:#00281c;display:grid;place-items:center;padding:0;font-size:10px}
 .nav a.promo span{font-size:22px;margin-bottom:-2px}
+.ic{width:22px;height:22px;display:block}
+.nav a span .ic{width:22px;height:22px;margin:0 auto}
+.nav a.promo span .ic{width:24px;height:24px;margin:0 auto;color:#00281c}
+.nav a.on{color:var(--g1);text-shadow:0 0 12px rgba(31,212,154,.5)}
+.nav a.on .ic{filter:drop-shadow(0 0 5px rgba(31,212,154,.6))}
